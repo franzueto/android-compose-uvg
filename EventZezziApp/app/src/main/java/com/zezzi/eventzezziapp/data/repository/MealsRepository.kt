@@ -1,7 +1,7 @@
-package com.zezzi.eventzezziapp.ui.meals.repository
+package com.zezzi.eventzezziapp.data.repository
 
-import com.zezzi.eventzezziapp.networking.MealsWebService
-import com.zezzi.eventzezziapp.networking.response.MealsCategoriesResponse
+import com.zezzi.eventzezziapp.data.networking.MealsWebService
+import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

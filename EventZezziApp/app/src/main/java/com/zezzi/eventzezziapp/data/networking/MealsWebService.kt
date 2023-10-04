@@ -1,13 +1,13 @@
-package com.zezzi.eventzezziapp.networking
+package com.zezzi.eventzezziapp.data.networking
 
-import com.zezzi.eventzezziapp.networking.response.MealsCategoriesResponse
+import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
 import retrofit2.Retrofit
 import retrofit2.Call
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MealsWebService {
 
-    private lateinit var api: MealsApi
+    private val api: MealsApi
 
     init {
         val retrofit = Retrofit.Builder()
