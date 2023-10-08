@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.zezzi.eventzezziapp.navigation.AppBar
 import com.zezzi.eventzezziapp.data.networking.response.MealResponse
+import kotlinx.coroutines.runBlocking
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,7 +24,11 @@ fun MealsCategoriesScreen(
     val rememberedMeals: MutableState<List<MealResponse>> =
         remember { mutableStateOf(emptyList<MealResponse>()) }
 
-    viewModel.getMeals()
+    runBlocking {
+        val response = viewModel.getMeals()
+        val mealsFromTheApi = response?.categories
+        rememberedMeals.value = mealsFromTheApi.orEmpty()
+    }
 
     Scaffold(
         topBar = {
