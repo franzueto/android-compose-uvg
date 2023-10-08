@@ -6,6 +6,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,7 +24,8 @@ fun MealsCategoriesScreen(
     val rememberedMeals: MutableState<List<MealResponse>> =
         remember { mutableStateOf(emptyList<MealResponse>()) }
 
-    viewModel.getMeals { response ->
+    LaunchedEffect(key1 = Unit) {
+        val response = viewModel.getMeals()
         val mealsFromTheApi = response?.categories
         rememberedMeals.value = mealsFromTheApi.orEmpty()
     }

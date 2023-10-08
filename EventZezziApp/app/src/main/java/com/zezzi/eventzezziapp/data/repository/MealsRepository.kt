@@ -5,19 +5,14 @@ import kotlinx.coroutines.withContext
 
 class MealsRepository(private val webService: MealsWebService = MealsWebService()) {
     suspend fun getMeals(): MealsCategoriesResponse? {
-        return try {
-            withContext(Dispatchers.IO) {
-                val response = webService.getMeals().execute()
-                if (response.isSuccessful) {
-                    response.body()
-                } else {
-                    // Manejar el error de alguna manera, por ejemplo, lanzar una excepción personalizada.
-                    null
-                }
+        return withContext(Dispatchers.IO) {
+            try {
+                // Llamar a la función suspendida en el webService para obtener los datos.
+                webService.getMeals()
+            } catch (e: Exception) {
+                // Manejar errores si es necesario.
+                null
             }
-        } catch (e: Exception) {
-            // Manejar la excepción de alguna manera, por ejemplo, lanzar una excepción personalizada.
-            null
         }
     }
 }
