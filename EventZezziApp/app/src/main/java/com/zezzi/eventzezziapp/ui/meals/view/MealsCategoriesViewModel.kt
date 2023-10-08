@@ -8,14 +8,14 @@ import kotlinx.coroutines.withContext
 
 class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRepository()): ViewModel() {
     suspend fun getMeals(): MealsCategoriesResponse? {
-        return withContext(Dispatchers.IO) {
-            try {
-                // Llamar a la función suspendida en el repositorio para obtener los datos.
-                repository.getMeals()
-            } catch (e: Exception) {
-                // Manejar errores si es necesario.
-                null
-            }
+        return try {
+            repository.getMeals()
+        } catch (e: Exception) {
+            // Manejar errores si es necesario.
+            null
         }
     }
 }
+
+
+
