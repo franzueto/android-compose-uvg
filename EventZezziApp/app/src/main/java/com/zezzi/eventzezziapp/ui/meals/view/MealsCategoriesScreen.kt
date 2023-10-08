@@ -23,7 +23,6 @@ fun MealsCategoriesScreen(
     val rememberedMeals: MutableState<List<MealResponse>> =
         remember { mutableStateOf(emptyList<MealResponse>()) }
 
-    println("This is a TEST SEEEEE MEEEEE")
     viewModel.getMeals()
 
     Scaffold(

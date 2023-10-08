@@ -7,8 +7,8 @@ import kotlinx.coroutines.runBlocking
 
 class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRepository()): ViewModel() {
     fun getMeals() {
+        println("1")
         runBlocking {
-
             println(repository.getMeals ())
         }
     }
