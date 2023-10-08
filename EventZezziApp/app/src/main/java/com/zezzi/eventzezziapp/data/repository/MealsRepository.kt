@@ -8,7 +8,9 @@ class MealsRepository(private val webService: MealsWebService = MealsWebService(
         return withContext(Dispatchers.IO) {
             try {
                 // Llamar a la función suspendida en el webService para obtener los datos.
-                webService.getMeals()
+                val response = webService.getMeals()
+                Result.success(response).getOrNull()
+
             } catch (e: Exception) {
                 // Manejar errores si es necesario.
                 null
