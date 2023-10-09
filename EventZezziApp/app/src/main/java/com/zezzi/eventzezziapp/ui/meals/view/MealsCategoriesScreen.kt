@@ -1,7 +1,6 @@
 package com.zezzi.eventzezziapp.ui.meals.view
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -14,17 +13,13 @@ import androidx.compose.material.Text
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.zezzi.eventzezziapp.navigation.AppBar
-import com.zezzi.eventzezziapp.data.networking.response.MealResponse
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,12 +27,8 @@ fun MealsCategoriesScreen(
     navController: NavController,
     viewModel: MealsCategoriesViewModel = viewModel()
 ) {
-    val rememberedMeals: MutableState<List<MealResponse>> =
-        remember { mutableStateOf(emptyList<MealResponse>()) }
-
-    viewModel.getMeals { response ->
-        val mealsFromTheApi = response?.categories
-        rememberedMeals.value = mealsFromTheApi.orEmpty()
+    LaunchedEffect(Unit){
+        viewModel.getMeals()
     }
 
     Scaffold(
@@ -49,7 +40,7 @@ fun MealsCategoriesScreen(
             contentPadding = it,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(rememberedMeals.value) { meal ->
+            items(viewModel.meals.value) { meal ->
                 Card (
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(8.dp)
