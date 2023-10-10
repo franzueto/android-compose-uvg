@@ -2,24 +2,21 @@ package com.zezzi.eventzezziapp.data.repository
 
 import com.zezzi.eventzezziapp.data.networking.MealsWebService
 import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MealsRepository(private val webService: MealsWebService = MealsWebService()) {
-    fun getMeals(successCallback: (response: MealsCategoriesResponse?) -> Unit) {
-        return webService.getMeals().enqueue(object : Callback<MealsCategoriesResponse> {
-            override fun onResponse(
-                call: Call<MealsCategoriesResponse>,
-                response: Response<MealsCategoriesResponse>
-            ) {
-                if (response.isSuccessful)
-                    successCallback(response.body())
-            }
+    suspend fun getMeals(): MealsCategoriesResponse? {
+        return withContext(Dispatchers.IO) {
+            try {
+                // El resultado de la solicitud de red se almacena en la variable meals
+                val response = webService.getMeals()
+                Result.success(response).getOrNull()
 
-            override fun onFailure(call: Call<MealsCategoriesResponse>, t: Throwable) {
-                // TODO treat failure
+            } catch (e: Exception) {
+                // Maneja la excepción de tiempo de espera aquí
+                null
             }
-        })
+        }
     }
 }
