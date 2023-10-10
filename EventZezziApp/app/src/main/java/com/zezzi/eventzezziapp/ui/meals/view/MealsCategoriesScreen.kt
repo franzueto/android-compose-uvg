@@ -60,7 +60,7 @@ fun MealsCategoriesScreen(
 
     Scaffold(
         topBar = {
-            AppBar(title = "Recipies", navController = navController)
+            AppBar(title = "Recepies", navController = navController)
         }
     ) {
         Column(
