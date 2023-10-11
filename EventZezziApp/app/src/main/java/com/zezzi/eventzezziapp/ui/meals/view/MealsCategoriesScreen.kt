@@ -23,19 +23,17 @@ fun MealsCategoriesScreen(
     val rememberedMeals: MutableState<List<MealResponse>> =
         remember { mutableStateOf(emptyList<MealResponse>()) }
 
-    viewModel.getMeals { response ->
-        val mealsFromTheApi = response?.categories
-        rememberedMeals.value = mealsFromTheApi.orEmpty()
-    }
+    rememberedMeals.value = viewModel.getMeals().categories
 
     Scaffold(
         topBar = {
-            AppBar(title = "Categories", navController = navController)
+            AppBar(title = "Recepies", navController = navController)
         }
     ) {
         LazyColumn(contentPadding = it) {
             items(rememberedMeals.value) { meal ->
                 Text(text = meal.name)
+                Image(painter=rememberedMeals(request=meal.imageUrl),modifier=Modifier.size(50dp))
             }
         }
     }
