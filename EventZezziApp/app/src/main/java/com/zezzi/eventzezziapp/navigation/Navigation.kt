@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.zezzi.eventzezziapp.ui.meals.view.ArticleCard
 import com.zezzi.eventzezziapp.ui.meals.view.MealsCategoriesScreen
 
 @Composable
@@ -17,6 +18,7 @@ fun Navigation(modifier: Modifier = Modifier) {
     ) {
         composable(route = NavigationState.Meals.route) {
             MealsCategoriesScreen(navController)
+            ArticleCard()
         }
     }
 }
