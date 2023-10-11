@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -52,6 +54,29 @@ android {
 dependencies {
     val navVersion = "2.7.3"
     val accompanistVersion = "0.32.0"
+    val lifecycle_version = "2.5.1"
+
+
+    implementation ("androidx.compose.ui:ui:1.2.0-beta02")
+    implementation ("androidx.compose.ui:ui-tooling:1.2.0-beta02")
+    implementation ("androidx.compose.foundation:foundation:1.2.0-beta02")
+    implementation ("androidx.compose.material:material:1.2.0-beta02")
+
+    // ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // ViewModel utilities for Compose
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    // LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+
+    // Saved state module for ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation ("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
+
     implementation("androidx.compose.ui:ui-android:1.5.2")
     implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager-indicators:$accompanistVersion")
@@ -79,4 +104,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+
 }
