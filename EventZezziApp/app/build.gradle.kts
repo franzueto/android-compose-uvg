@@ -50,8 +50,14 @@ android {
 }
 
 dependencies {
+    val lifecycle_version = "2.6.2"
+    val arch_version = "2.2.0"
     val navVersion = "2.7.3"
     val accompanistVersion = "0.32.0"
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // ViewModel utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
     implementation("androidx.compose.ui:ui-android:1.5.2")
     implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager-indicators:$accompanistVersion")
