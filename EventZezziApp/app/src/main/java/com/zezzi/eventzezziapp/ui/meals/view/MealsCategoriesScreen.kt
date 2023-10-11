@@ -26,9 +26,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.zezzi.eventzezziapp.data.networking.response.MealResponse
 import com.zezzi.eventzezziapp.navigation.AppBar
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.layout.Modifier
-import androidx.compose.ui.layout.weight
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -64,19 +62,17 @@ fun CategoryCard(meal: MealResponse) {
             .clickable { showDialog = true },
         shape = RoundedCornerShape(16.dp)
     ) {
-        Column(
+        Row(
             modifier = Modifier
-                .weight(1f)
-                .padding(16.dp)
-                .fontFamily(FontFamily.SansSerif),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
         ) {
             Text(
                 text = meal.name,
-                fontSize = 40.sp,
+                fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Blue
+                color = Color.White
             )
             AsyncImage(
                 model = meal.imageUrl,
@@ -93,23 +89,21 @@ fun CategoryCard(meal: MealResponse) {
     }
 }
 
-
-
-
 @Composable
 fun ShowDescriptionDialog(meal: MealResponse, onClose: () -> Unit) {
     AlertDialog(
         onDismissRequest = onClose,
-        title = { Text(text = meal.name, fontSize = 24.sp) },
-        text = { Text(text = meal.description, fontSize = 15.sp) },
+        title = { Text(text = meal.name, fontSize = 20.sp) },
+        text = { Text(text = meal.description, fontSize = 10.sp) },
         confirmButton = {
             TextButton(onClick = onClose) {
                 Text("Ok")
             }
         },
-        shape = RoundedCornerShape(16.dp),
-        modifier = Modifier.border(2.dp, Color.Gray)
+        shape = RoundedCornerShape(15.dp),
+        modifier = Modifier.border(1.dp, Color.LightGray)
     )
 }
+
 
 

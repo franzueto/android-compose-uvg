@@ -57,10 +57,10 @@ dependencies {
     val lifecycle_version = "2.5.1"
 
 
-    implementation ("androidx.compose.ui:ui:1.2.0-beta02")
-    implementation ("androidx.compose.ui:ui-tooling:1.2.0-beta02")
-    implementation ("androidx.compose.foundation:foundation:1.2.0-beta02")
-    implementation ("androidx.compose.material:material:1.2.0-beta02")
+    implementation ("androidx.compose.ui:ui:1.1.0-alpha06")
+    implementation ("androidx.compose.ui:ui-tooling:1.1.0-alpha06")
+    implementation ("androidx.compose.foundation:foundation:1.1.0-alpha06")
+    implementation ("androidx.compose.material:material:1.1.0-alpha06")
 
     // ViewModel
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
