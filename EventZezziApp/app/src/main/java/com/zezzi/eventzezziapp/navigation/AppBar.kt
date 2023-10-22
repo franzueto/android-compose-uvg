@@ -32,4 +32,5 @@ fun AppBar(title: String, navController: NavController) {
                 null
             }
         })
+    }
 }
