@@ -1,13 +1,9 @@
-//package com.zezzi.eventzezziapp.data.repository
-import com.zezzi.eventzezziapp.data.networking.MealsWebService
+package com.zezzi.eventzezziapp.data.repository
+//import com.zezzi.eventzezziapp.data.networking.MealsWebService
 import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
 import kotlinx.coroutines.WithContext
 import kotlinx.coroutines.Dispatchers
-//import retrofit2.Call
-//import retrofit2.Callback
-//import retrofit2.Response
 import MealsWebService
-
 
 class MealsRepository(private val webService: MealsWebService = MealsWebService()) {
     suspend fun getMeals(): MealsCategoriesResponse? {
@@ -19,6 +15,7 @@ class MealsRepository(private val webService: MealsWebService = MealsWebService(
                 printf("Error en el sistema")
                 null
             }
+            webService.getMeals()
         }
     }
 }
