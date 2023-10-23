@@ -5,7 +5,7 @@ data class FoodRes(@SerializedName("meals") val foodInstruction: List<FoodRespon
 data class FoodResponse(
     @SerializedName("MealsId") val id: String,
     @SerializedName("MealsStri") val meal: String,
-    @SerializedName("InstStr") val instrucciones: String?,
+    @SerializedName("InstStr") val instrucs: String?,
     @SerializedName("MealsImStr") val imageUrl: String,
     @SerializedName("VideoStr") val video: String?,
 
