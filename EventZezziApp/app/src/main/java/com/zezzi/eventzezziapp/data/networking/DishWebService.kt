@@ -1,13 +1,12 @@
 package com.zezzi.eventzezziapp.data.networking
 
 import com.zezzi.eventzezziapp.data.networking.response.DishCategoriesResponse
-import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
+import com.zezzi.eventzezziapp.data.networking.response.IngredientsCategoriesResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MealsWebService {
-
-    private val api: MealsApi
+class DishWebService {
+    private val api: DishApi
 
     init {
         val retrofit = Retrofit.Builder()
@@ -15,11 +14,12 @@ class MealsWebService {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        api = retrofit.create(MealsApi::class.java)
+        api = retrofit.create(DishApi::class.java)
     }
 
-     suspend fun getMeals(): MealsCategoriesResponse {
-        return api.getMeals()
+    suspend fun getDishes(mealName: String): DishCategoriesResponse {
+        return api.getDishes(mealName)
     }
+
 
 }

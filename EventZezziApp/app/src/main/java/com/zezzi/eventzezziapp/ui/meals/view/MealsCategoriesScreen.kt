@@ -2,20 +2,25 @@ package com.zezzi.eventzezziapp.ui.meals.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -39,17 +44,20 @@ import com.zezzi.eventzezziapp.navigation.AppBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MealsCategoriesScreen(
-    navController: NavController,
     viewModel: MealsCategoriesViewModel = viewModel()
+    , navController: NavController
 ) {
     val rememberedMeals: MutableState<List<MealResponse>> =
         remember { mutableStateOf(emptyList<MealResponse>()) }
+    val isLoading: MutableState<Boolean> = remember { mutableStateOf(true) }
 
     LaunchedEffect(key1 = Unit) {
         try {
             val response = viewModel.getMeals()
             rememberedMeals.value = response?.categories.orEmpty()
+            isLoading.value = false
         } catch (e: Exception) {
+            isLoading.value = false
             // Manejar errores si es necesario.
         }
     }
@@ -59,66 +67,84 @@ fun MealsCategoriesScreen(
             AppBar(title = "Recipies", navController = navController)
         }
     ) {
-        Column(
-            modifier = Modifier
-                .padding(it)
-                .fillMaxSize()
-                .background(color = Color(20, 33, 61)),
+        if (isLoading.value) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator(
+                    modifier = Modifier.width(64.dp),
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+        } else {
 
-        ) {
-            rememberedMeals.value.forEach { meal ->
-                Surface(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                        .shadow(
-                            elevation = 10.dp,
-                            shape = RoundedCornerShape(20.dp),
-                        ),
-                    shape = RoundedCornerShape(20.dp),
-                    color = Color.White
+            Column(
+                modifier = Modifier
+                    .padding(it)
+                    .fillMaxSize()
+                    .background(color = Color(20, 33, 61))
+                    .verticalScroll(rememberScrollState()),
+
                 ) {
-                    Row(
+                rememberedMeals.value.forEach { meal ->
+                    Button(
+                        onClick = {
+                            navController.navigate("DishesCategoriesScreen/${meal.name}")
+                            // Aquí puedes poner la acción que se ejecutará cuando se haga clic en el botón.
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(12.dp), // Espaciado entre elementos
-                        verticalAlignment = Alignment.CenterVertically
+                            .padding(16.dp)
+                            .shadow(
+                                elevation = 10.dp,
+                                shape = RoundedCornerShape(20.dp),
+                            ),
+                        shape = RoundedCornerShape(20.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.White)
                     ) {
-
-                        // Imagen a la izquierda
-                        Image(
-                            painter = rememberImagePainter(data = meal.imageUrl),
-                            contentDescription = null, // Agrega descripción apropiada
+                        Row(
                             modifier = Modifier
-                                .size(85.dp) // Tamaño de la imagen
-                        )
-                        Column(
-
+                                .fillMaxWidth()
+                                .padding(12.dp), // Espaciado entre elementos
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "Category Name",
-                                modifier = Modifier
-                                    .padding(start = 16.dp), // Espaciado entre imagen y texto
-                                style = TextStyle(fontSize = 16.sp) // Tamaño de texto apropiado
-                            )
 
-                            // Categoría a la derecha
-                            Text(
+                            // Imagen a la izquierda
+                            Image(
+                                painter = rememberImagePainter(data = meal.imageUrl),
+                                contentDescription = null, // Agrega descripción apropiada
+                                modifier = Modifier
+                                    .size(85.dp) // Tamaño de la imagen
+                            )
+                            Column(
 
-                                text = meal.name,
-                                modifier = Modifier
-                                    .padding(start = 16.dp), // Espaciado entre imagen y texto
-                                style = TextStyle(fontSize = 16.sp) // Tamaño de texto apropiado
-                            )
-                            Divider(
-                                color = Color.Gray,
-                            )
-                            Text(
-                                text = "Date 10 Month 8 day",
-                                modifier = Modifier
-                                    .padding(start = 16.dp), // Espaciado entre imagen y texto
-                                style = TextStyle(fontSize = 16.sp) // Tamaño de texto apropiado
-                            )
+                            ) {
+                                Text(
+                                    text = "Category Name",
+                                    modifier = Modifier
+                                        .padding(start = 16.dp), // Espaciado entre imagen y texto
+                                    style = TextStyle(fontSize = 16.sp) // Tamaño de texto apropiado
+                                )
+
+                                // Categoría a la derecha
+                                Text(
+
+                                    text = meal.name,
+                                    modifier = Modifier
+                                        .padding(start = 16.dp), // Espaciado entre imagen y texto
+                                    style = TextStyle(fontSize = 16.sp) // Tamaño de texto apropiado
+                                )
+                                Divider(
+                                    color = Color.Gray,
+                                )
+                                Text(
+                                    text = "Date 10 Month 8 day",
+                                    modifier = Modifier
+                                        .padding(start = 16.dp), // Espaciado entre imagen y texto
+                                    style = TextStyle(fontSize = 16.sp) // Tamaño de texto apropiado
+                                )
+                            }
                         }
                     }
                 }
@@ -126,4 +152,3 @@ fun MealsCategoriesScreen(
         }
     }
 }
-
