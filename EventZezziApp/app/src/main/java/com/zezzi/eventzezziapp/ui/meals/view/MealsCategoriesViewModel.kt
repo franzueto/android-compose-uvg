@@ -15,6 +15,8 @@ class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRe
 
     val mealsByCategory: MutableState<List<MealDetailResponse>> = mutableStateOf((emptyList()))
 
+    val isLoading = mutableStateOf(false)
+
     fun getMeals() {
         viewModelScope.launch {
             val response = repository.getMeals()
@@ -24,8 +26,17 @@ class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRe
 
     fun getMealsByCategory(category: String){
         viewModelScope.launch {
-            val response = repository.getMealsByCategory(category)
-            mealsByCategory.value = response.meals
+            try {
+                isLoading.value = true
+                val response = repository.getMealsByCategory(category)
+                mealsByCategory.value = response.meals
+            }catch (e: Exception){
+                // Handle Error
+            }
+            finally {
+                isLoading.value = false
+            }
         }
     }
+
 }

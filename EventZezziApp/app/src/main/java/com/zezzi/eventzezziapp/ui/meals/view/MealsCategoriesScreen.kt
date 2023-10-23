@@ -55,15 +55,15 @@ fun CategoryCard(navController: NavController, meal: MealResponse) {
             .fillMaxWidth()
             .height(250.dp)
             .clickable {
-                       navController.navigate(routeWithArgument(meal.name))
-                },
-        shape = RoundedCornerShape(16.dp)
-    ) {
+                navController.navigate(routeWithArgument(meal.name))
+                       },
+        shape = RoundedCornerShape(16.dp))
+    {
         Column(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+            horizontalAlignment = Alignment.CenterHorizontally)
+        {
             AsyncImage(
                 model = meal.imageUrl,
                 contentDescription = "Category Image",
