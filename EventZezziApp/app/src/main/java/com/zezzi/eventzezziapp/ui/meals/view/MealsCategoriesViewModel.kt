@@ -22,4 +22,5 @@ class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRe
             )
         }
     }
+
 }
