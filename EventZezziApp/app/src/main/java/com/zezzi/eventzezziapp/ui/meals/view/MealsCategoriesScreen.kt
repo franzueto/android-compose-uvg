@@ -141,3 +141,5 @@ fun CategoryCard(meal: Meal, navController: NavController) {
         }
     }
 }
+
+//LISTO!!
