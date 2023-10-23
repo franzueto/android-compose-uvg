@@ -29,7 +29,7 @@ fun Navigation(modifier: Modifier = Modifier) {
         ){backStackEntry ->
             val category = backStackEntry.arguments?.getString(NavigationState.MealsByCategory.ARG_CATEGORY)
             if (category != null) {
-                MealsByCategoryScreen(mealCategory = category)
+                MealsByCategoryScreen(navController = navController, mealCategory = category)
             }
         }
     }
