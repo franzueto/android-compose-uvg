@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.ElevatedButton
+import com.zezzi.eventzezziapp.navigation.NavigationState
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import androidx.compose.foundation.layout.padding
@@ -35,6 +36,7 @@ import androidx.navigation.NavController
 import com.zezzi.eventzezziapp.navigation.AppBar
 import com.zezzi.eventzezziapp.data.networking.response.MealResponse
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MealsCategoriesScreen(
@@ -43,12 +45,8 @@ fun MealsCategoriesScreen(
 ) {
     val rememberedMeals: MutableState<List<MealResponse>> =
         remember { mutableStateOf(emptyList<MealResponse>()) }
-
-
-    runBlocking {
-        val response = viewModel.getMeals()
-        val mealsFromTheApi = response?.categories
-        rememberedMeals.value = mealsFromTheApi.orEmpty()
+    if (viewModel.meals.cat.isEmpty()){
+        viewModel.getMeals()
     }
     Scaffold(
         topBar = {
@@ -56,9 +54,9 @@ fun MealsCategoriesScreen(
         }
     ) {
         LazyColumn(contentPadding = it) {
-            items(rememberedMeals.value) { meal ->
+            items(viewModel.meals.cat) { meal ->
                 ElevatedButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate("${NavigationState.RecipeScreen.route}/${meal.name}") },
                     modifier = Modifier
                         .padding(2.dp)
                 ) {
@@ -70,25 +68,25 @@ fun MealsCategoriesScreen(
                             modifier = Modifier.padding(10.dp)
                         )
                         Column(
-                            modifier = Modifier.weight(2f),
+                            modifier = Modifier.weight(3f),
                             verticalArrangement = Arrangement.Center
                         ){
                             Text(
                                 text = "Category Name",
-                                modifier = Modifier.padding(5.dp),
+                                modifier = Modifier.padding(7.dp),
                                 color = Color.Black,
 
                                 )
                             Text(
                                 text = meal.name,
-                                modifier = Modifier.padding(5.dp),
+                                modifier = Modifier.padding(7.dp),
                                 color = Color.Black,
-                                fontSize = 20.sp
+                                fontSize = 18.sp
                             )
                             Spacer(modifier = Modifier
                                 .background(Color.Gray)
                                 .height(1.dp))
-                            Text(text = "Date 11 Month 12 day")
+                            Text(text = "aa")
                         }
                     }
                 }
