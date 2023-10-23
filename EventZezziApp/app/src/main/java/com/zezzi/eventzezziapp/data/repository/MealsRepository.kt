@@ -7,16 +7,8 @@ import kotlinx.coroutines.withContext
 
 class MealsRepository(private val webService: MealsWebService = MealsWebService()) {
     suspend fun getMeals(): MealsCategoriesResponse {
-        return webService.getMeals()
-        //return withContext(Dispatchers.IO) {
-        //webService.getMeals()
-        //}
+        return withContext(Dispatchers.IO) {
+            webService.getMeals()
+        }
     }
 }
-
-
-//suspend fun getMeals(): MealsCategoriesResponse {
-
-//    return withContext(Dispatchers.IO) {
-//    webService.getMeals()
-//    }
