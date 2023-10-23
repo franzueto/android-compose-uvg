@@ -7,6 +7,7 @@ import com.zezzi.eventzezziapp.ui.meals.view.MealsCategoriesScreen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import com.zezzi.eventzezziapp.ui.food.ScreenFood
 
 @Composable
 fun Navigation(modifier: Modifier = Modifier) {
@@ -21,6 +22,9 @@ fun Navigation(modifier: Modifier = Modifier) {
         }
         composable(route = NavigationState.RecipesScreen.route + "/{category}") { backstackEntry ->
             MealsScreen(navController, backstackEntry.arguments?.getString("category") ?: "")
+        }
+        composable(route = NavigationState.FoodScreen.route+ "/{meal}"){backstackEntry ->
+            FoodScreen(navController, backstackEntry.arguments?.getString("meal")?: "")
         }
     }
 }
