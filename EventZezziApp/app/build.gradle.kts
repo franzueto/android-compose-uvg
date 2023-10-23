@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.zezzi.eventzezziapp"
-        minSdk = 34
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -50,19 +50,12 @@ android {
 }
 
 dependencies {
-    val lifecycle_version = "2.6.2"
-    val arch_version = "2.2.0"
-    val navVersion = "2.7.3"
+    val navVersion = "2.7.4"
     val accompanistVersion = "0.32.0"
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-    // ViewModel utilities for Compose
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
     implementation("androidx.compose.ui:ui-android:1.5.2")
     implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager-indicators:$accompanistVersion")
     implementation("androidx.navigation:navigation-compose:$navVersion")
-    implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.7.2")
@@ -71,6 +64,12 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+
+    // Coil - Load images from URL
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
     // RETROFIT
     implementation("com.google.code.gson:gson:2.9.0")

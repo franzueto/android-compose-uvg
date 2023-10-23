@@ -1,20 +1,25 @@
+package com.zezzi.eventzezziapp.ui.meals.view
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zezzi.eventzezziapp.data.networking.response.MealResponse
 import com.zezzi.eventzezziapp.data.repository.MealsRepository
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRepository()) : ViewModel() {
+class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRepository()): ViewModel() {
 
-    private val _categories: MutableStateFlow<List<MealResponse>> = MutableStateFlow(emptyList())
-    val categories: StateFlow<List<MealResponse>> get() = _categories
+    var categoryUiState by mutableStateOf(MealsCategoryUiState(emptyList()))
+        private set
 
     fun getMeals() {
+        categoryUiState = MealsCategoryUiState(emptyList(), loading = true)
+
         viewModelScope.launch {
-            val meals = repository.getMeals()
-            _categories.value = meals.categories
+            categoryUiState = MealsCategoryUiState(
+                categories = repository.getMeals().categories
+            )
         }
     }
 }
