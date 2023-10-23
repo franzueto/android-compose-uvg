@@ -42,7 +42,7 @@ fun MealsByCategoryScreen(
         viewModel.getMealsByCategory(mealCategory)
     }
 
-    Scaffold(topBar = { AppBar(title = "Meals by $mealCategory", navController = navController) }) {
+    Scaffold(topBar = { AppBar(title = "Meals - $mealCategory", navController = navController) }) {
         Box(modifier = Modifier.fillMaxSize()){
             if (viewModel.isLoading.value){
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
@@ -56,14 +56,6 @@ fun MealsByCategoryScreen(
         }
     }
 
-}
-
-fun truncateText(text: String, maxLength: Int): String{
-    return if (text.length > maxLength){
-        text.substring(0, maxLength) + "..."
-    }else{
-        text
-    }
 }
 
 @Composable
@@ -81,7 +73,9 @@ fun MealCard(meal: MealDetailResponse){
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally)
         {
-            Text(text = truncateText(meal.name, 22), fontSize = 25.sp, fontWeight = FontWeight.SemiBold)
+            val displayText = if (meal.name.length > 25) "${meal.name.take(25)}..." else meal.name
+            Text(text = displayText, fontSize = 25.sp, fontWeight = FontWeight.Normal)
+
             Spacer(modifier = Modifier.size(5.dp))
             AsyncImage(
                 model = meal.imageUrl,
