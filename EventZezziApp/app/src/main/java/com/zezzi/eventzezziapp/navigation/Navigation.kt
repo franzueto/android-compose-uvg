@@ -7,7 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.zezzi.eventzezziapp.ui.meals.view.MealsByCategoryScreen
 import com.zezzi.eventzezziapp.ui.meals.view.MealsCategoriesScreen
+
 
 @Composable
 fun Navigation(modifier: Modifier = Modifier) {
@@ -26,7 +28,9 @@ fun Navigation(modifier: Modifier = Modifier) {
             arguments = listOf(navArgument(NavigationState.MealsByCategory.ARG_CATEGORY){type = NavType.StringType})
         ){backStackEntry ->
             val category = backStackEntry.arguments?.getString(NavigationState.MealsByCategory.ARG_CATEGORY)
-            // Call screen here with argument (category)
+            if (category != null) {
+                MealsByCategoryScreen(mealCategory = category)
+            }
         }
     }
 }

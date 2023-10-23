@@ -5,4 +5,9 @@ sealed class NavigationState(val route: String) {
     object MealsByCategory: NavigationState("Meals_by/{category}"){
         const val ARG_CATEGORY = "category"
     }
+
+}
+
+fun routeWithArgument(category: String): String{
+    return "Meals_by/$category"
 }
