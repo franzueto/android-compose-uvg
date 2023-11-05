@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "17198875325",
-    "project_id": "meals-db-5abf1",
-    "storage_bucket": "meals-db-5abf1.appspot.com"
+    "project_number": "964337734586",
+    "project_id": "meals-db-4d792",
+    "storage_bucket": "meals-db-4d792.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:17198875325:android:fa03502122b63f9deeedd4",
+        "mobilesdk_app_id": "1:964337734586:android:5c39f3865ef18b5091c383",
         "android_client_info": {
           "package_name": "com.zezzi.eventzezziapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDqqmxJPKfFQ9-NMPJfqt_JL-TXv9OFcmU"
+          "current_key": "AIzaSyBdBvIxSVz1a5jyGSXP1R2GGTnBd4c18Rg"
         }
       ],
       "services": {

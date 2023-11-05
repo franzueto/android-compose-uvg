@@ -1,9 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-
-    // dependency for the Google services Gradle plugin
-    id("com.google.gms.google-services") version "4.4.0" apply false
+    //  Google services Gradle plugin
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -53,9 +52,9 @@ android {
 }
 
 dependencies {
-    val navVersion = "2.7.4"
+    val navVersion = "2.7.5"
     val accompanistVersion = "0.32.0"
-    implementation("androidx.compose.ui:ui-android:1.5.3")
+    implementation("androidx.compose.ui:ui-android:1.5.4")
     implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager-indicators:$accompanistVersion")
     implementation("androidx.navigation:navigation-compose:$navVersion")
@@ -87,12 +86,11 @@ dependencies {
     // Image Loader
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    // Import the Firebase BoM
+    // FIREBASE
+    // Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
-
-    // TODO: Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
-    implementation("com.google.firebase:firebase-analytics")
+    // Google Analytics
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    // Firestore
     implementation("com.google.firebase:firebase-firestore-ktx")
-
 }
