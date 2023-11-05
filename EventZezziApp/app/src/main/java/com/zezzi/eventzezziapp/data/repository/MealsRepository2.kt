@@ -1,33 +1,33 @@
 package com.zezzi.eventzezziapp.data.repository
 
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.zezzi.eventzezziapp.data.networking.response.Meal
-import com.zezzi.eventzezziapp.data.networking.response.MealsResponse
-import com.zezzi.eventzezziapp.ui.common.CircularLoadingSpinner
+import com.zezzi.eventzezziapp.data.networking.response.CategoryResponse
+import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-class MealsRepository() {
+
+class MealsRepository2 {
+
     val db = Firebase.firestore
-    suspend fun getMealsBy(): MealsResponse {
+
+    suspend fun getCategories(): MealsCategoriesResponse {
         return withContext(Dispatchers.IO) {
-            val documents = db.collection("meals")
+            val documents = db.collection("Meals")
                 //.whereEqualTo("name", "Beef")
                 .get().await().documents
-            MealsResponse(
+
+            MealsCategoriesResponse(
                 documents.map {
-                    Meal(
+                    CategoryResponse(
                         it.id,
                         it.getString("name") ?: "",
-                        it.getString("imageUrl") ?: "",
-
-                        )
+                        it.getString("description") ?: "",
+                        it.getString("imageUrl") ?: ""
+                    )
                 }
             )
-
         }
     }
- }
+}
