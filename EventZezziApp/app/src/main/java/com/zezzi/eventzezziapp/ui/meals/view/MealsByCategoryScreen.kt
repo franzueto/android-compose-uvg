@@ -73,7 +73,7 @@ fun MealCard(meal: MealDetailResponse){
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally)
         {
-            val displayText = if (meal.name.length > 25) "${meal.name.take(25)}..." else meal.name
+            val displayText = if (meal.name.length > 35) "${meal.name.take(30)}..." else meal.name
             Text(text = displayText, fontSize = 25.sp, fontWeight = FontWeight.Normal)
 
             Spacer(modifier = Modifier.size(5.dp))
