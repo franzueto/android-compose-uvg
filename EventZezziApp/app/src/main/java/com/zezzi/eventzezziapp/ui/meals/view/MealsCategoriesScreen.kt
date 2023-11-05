@@ -55,7 +55,7 @@ fun CategoryCard(navController: NavController, meal: MealResponse) {
             .fillMaxWidth()
             .height(250.dp)
             .clickable {
-                navController.navigate(routeWithArgument(meal.name))
+                navController.navigate(routeWithArgument(meal.id))
                        },
         shape = RoundedCornerShape(16.dp))
     {

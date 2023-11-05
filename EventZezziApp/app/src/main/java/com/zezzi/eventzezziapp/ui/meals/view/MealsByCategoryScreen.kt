@@ -37,7 +37,8 @@ import com.zezzi.eventzezziapp.navigation.AppBar
 fun MealsByCategoryScreen(
     navController: NavController,
     viewModel: MealsCategoriesViewModel = viewModel(),
-    mealCategory: String) {
+    mealCategory: String)
+{
     LaunchedEffect(Unit) {
         viewModel.getMealsByCategory(mealCategory)
     }
