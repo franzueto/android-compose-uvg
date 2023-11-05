@@ -43,7 +43,7 @@ fun MealsByCategoryScreen(
         viewModel.getMealsByCategory(mealCategory)
     }
 
-    Scaffold(topBar = { AppBar(title = "Meals - $mealCategory", navController = navController) }) {
+    Scaffold(topBar = { AppBar(title = "Recetas - $mealCategory", navController = navController) }) {
         Box(modifier = Modifier.fillMaxSize()){
             if (viewModel.isLoading.value){
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
@@ -56,7 +56,6 @@ fun MealsByCategoryScreen(
             }
         }
     }
-
 }
 
 @Composable

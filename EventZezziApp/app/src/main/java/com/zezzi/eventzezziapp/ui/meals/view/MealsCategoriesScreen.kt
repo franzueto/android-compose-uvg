@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
@@ -35,13 +36,26 @@ fun MealsCategoriesScreen(
         viewModel.getMeals()
     }
 
-    Scaffold(topBar = { AppBar(title = "Categories", navController = navController) })
+    Scaffold(topBar = { AppBar(title = "Categorias", navController = navController) })
     {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            contentPadding = it,
-            content = { items(viewModel.meals.value) { meal -> CategoryCard(navController, meal) } }
-        )
+        Box(modifier = Modifier.fillMaxSize()){
+            if (viewModel.isLoading.value){
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            }else {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    contentPadding = it,
+                    content = {
+                        items(viewModel.meals.value) { meal ->
+                            CategoryCard(
+                                navController,
+                                meal
+                            )
+                        }
+                    }
+                )
+            }
+        }
     }
 }
 
@@ -56,7 +70,7 @@ fun CategoryCard(navController: NavController, meal: MealResponse) {
             .height(250.dp)
             .clickable {
                 navController.navigate(routeWithArgument(meal.id))
-                       },
+            },
         shape = RoundedCornerShape(16.dp))
     {
         Column(
@@ -70,7 +84,6 @@ fun CategoryCard(navController: NavController, meal: MealResponse) {
                 modifier = Modifier.size(120.dp)
             )
             Text(text = meal.name, fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(text = "${meal.description.take(50)}...", fontSize = 15.sp)
         }
     }
 }
