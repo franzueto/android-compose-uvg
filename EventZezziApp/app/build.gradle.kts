@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    // dependency for the Google services Gradle plugin
+    id("com.google.gms.google-services") version "4.4.0" apply false
 }
 
 android {
@@ -83,4 +86,13 @@ dependencies {
     // COIL
     // Image Loader
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+
+    // TODO: Add the dependencies for Firebase products you want to use
+    // When using the BoM, don't specify versions in Firebase dependencies
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
 }
