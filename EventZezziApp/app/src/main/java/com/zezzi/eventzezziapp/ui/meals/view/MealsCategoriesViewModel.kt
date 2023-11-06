@@ -5,10 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zezzi.eventzezziapp.data.repository.MealsRepository
+import com.zezzi.eventzezziapp.data.repository.MealsRepository2
 import kotlinx.coroutines.launch
 
-class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRepository()): ViewModel() {
+class MealsCategoriesViewModel(private val repository: MealsRepository2 = MealsRepository2()): ViewModel() {
 
     var categoryUiState by mutableStateOf(MealsCategoryUiState(emptyList()))
         private set
@@ -18,7 +18,7 @@ class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRe
 
         viewModelScope.launch {
             categoryUiState = MealsCategoryUiState(
-                categories = repository.getMeals().categories
+                categories = repository.getCategories().categories
             )
         }
     }
