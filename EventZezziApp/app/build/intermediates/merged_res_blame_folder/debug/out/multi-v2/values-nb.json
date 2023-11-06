@@ -1,0 +1,94 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.zezzi.eventzezziapp-mergeDebugResources-57:/values-nb/values-nb.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Daniel Barillas\\.gradle\\caches\\transforms-3\\f45f103f2ea073fc605493d4aed2e9c8\\transformed\\play-services-basement-18.1.0\\res\\values-nb\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "125",
+                        "endOffsets": "320"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "2089",
+                        "endColumns": "129",
+                        "endOffsets": "2214"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Daniel Barillas\\.gradle\\caches\\transforms-3\\a25ef3e44ddb67d4c3d035a1ba921426\\transformed\\ui-release\\res\\values-nb\\values-nb.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,198,279,376,476,564,640,728,817,899,963,1027,1107,1189,1259,1336,1403",
+                        "endColumns": "92,80,96,99,87,75,87,88,81,63,63,79,81,69,76,66,119",
+                        "endOffsets": "193,274,371,471,559,635,723,812,894,958,1022,1102,1184,1254,1331,1398,1518"
+                    },
+                    "to": {
+                        "startLines": "9,10,30,31,33,35,36,37,38,39,40,41,42,43,45,46,47",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "831,924,3294,3391,3567,3728,3804,3892,3981,4063,4127,4191,4271,4353,4524,4601,4668",
+                        "endColumns": "92,80,96,99,87,75,87,88,81,63,63,79,81,69,76,66,119",
+                        "endOffsets": "919,1000,3386,3486,3650,3799,3887,3976,4058,4122,4186,4266,4348,4418,4596,4663,4783"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Daniel Barillas\\.gradle\\caches\\transforms-3\\353c12db9a2641a79b09c8ad83331a5a\\transformed\\core-1.12.0\\res\\values-nb\\values-nb.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,251,348,447,555,661,781",
+                        "endColumns": "93,101,96,98,107,105,119,100",
+                        "endOffsets": "144,246,343,442,550,656,776,877"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,44",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,199,301,398,497,605,711,4423",
+                        "endColumns": "93,101,96,98,107,105,119,100",
+                        "endOffsets": "194,296,393,492,600,706,826,4519"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Daniel Barillas\\.gradle\\caches\\transforms-3\\b85d8334fe11194a49f09076dfa741b7\\transformed\\material3-1.0.0\\res\\values-nb\\values-nb.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,130,206",
+                        "endColumns": "74,75,72",
+                        "endOffsets": "125,201,274"
+                    },
+                    "to": {
+                        "startLines": "11,32,34",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "1005,3491,3655",
+                        "endColumns": "74,75,72",
+                        "endOffsets": "1075,3562,3723"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Daniel Barillas\\.gradle\\caches\\transforms-3\\a7506622404fa9bd497c99fbf7150cae\\transformed\\play-services-base-18.0.1\\res\\values-nb\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,295,450,572,677,829,955,1071,1170,1320,1423,1580,1704,1842,2014,2077,2135",
+                        "endColumns": "101,154,121,104,151,125,115,98,149,102,156,123,137,171,62,57,73",
+                        "endOffsets": "294,449,571,676,828,954,1070,1169,1319,1422,1579,1703,1841,2013,2076,2134,2208"
+                    },
+                    "to": {
+                        "startLines": "12,13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1080,1186,1345,1471,1580,1736,1866,1986,2219,2373,2480,2641,2769,2911,3087,3154,3216",
+                        "endColumns": "105,158,125,108,155,129,119,102,153,106,160,127,141,175,66,61,77",
+                        "endOffsets": "1181,1340,1466,1575,1731,1861,1981,2084,2368,2475,2636,2764,2906,3082,3149,3211,3289"
+                    }
+                }
+            ]
+        }
+    ]
+}

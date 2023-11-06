@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_small">20dp</dimen>
+    <string name="app_name">EventZezziApp</string>
+    <string name="gcm_defaultSenderId" translatable="false">234027444020</string>
+    <string name="google_api_key" translatable="false">AIzaSyBOtf0EvajniKA0vl_0m_FQA91dYfDC-OE</string>
+    <string name="google_app_id" translatable="false">1:234027444020:android:bea6f8d2e890b7def62761</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBOtf0EvajniKA0vl_0m_FQA91dYfDC-OE</string>
+    <string name="google_storage_bucket" translatable="false">lab11ppm21.appspot.com</string>
+    <string name="project_id" translatable="false">lab11ppm21</string>
+    <style name="Theme.EventZezziApp" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>

@@ -1,25 +1,33 @@
 package com.zezzi.eventzezziapp.data.repository
 
-import com.zezzi.eventzezziapp.data.networking.MealsWebService
-import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.zezzi.eventzezziapp.data.networking.response.Meal
+import com.zezzi.eventzezziapp.data.networking.response.MealsResponse
+import com.zezzi.eventzezziapp.ui.common.CircularLoadingSpinner
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+class MealsRepository() {
+    val db = Firebase.firestore
+    suspend fun getMealsBy(): MealsResponse {
+        return withContext(Dispatchers.IO) {
+            val documents = db.collection("meals")
+                //.whereEqualTo("name", "Beef")
+                .get().await().documents
+            MealsResponse(
+                documents.map {
+                    Meal(
+                        it.id,
+                        it.getString("name") ?: "",
+                        it.getString("imageUrl") ?: "",
 
-class MealsRepository(private val webService: MealsWebService = MealsWebService()) {
-    fun getMeals(successCallback: (response: MealsCategoriesResponse?) -> Unit) {
-        return webService.getMeals().enqueue(object : Callback<MealsCategoriesResponse> {
-            override fun onResponse(
-                call: Call<MealsCategoriesResponse>,
-                response: Response<MealsCategoriesResponse>
-            ) {
-                if (response.isSuccessful)
-                    successCallback(response.body())
-            }
+                        )
+                }
+            )
 
-            override fun onFailure(call: Call<MealsCategoriesResponse>, t: Throwable) {
-                // TODO treat failure
-            }
-        })
+        }
     }
-}
+ }
