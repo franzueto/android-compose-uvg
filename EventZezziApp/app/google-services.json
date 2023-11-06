@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "882886492898",
+    "project_id": "lab11-plataformasmoviles",
+    "storage_bucket": "lab11-plataformasmoviles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882886492898:android:0033a647a255371aa754bb",
+        "android_client_info": {
+          "package_name": "com.zezzi.eventzezziapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMTHtv9dGvCnhyo6lzfccKWNHn3duj4xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
