@@ -1,8 +1,8 @@
 package com.zezzi.eventzezziapp.data.networking
 
 import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
+import com.zezzi.eventzezziapp.data.networking.response.MealsResponse
 import retrofit2.Retrofit
-import retrofit2.Call
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MealsWebService {
@@ -18,7 +18,11 @@ class MealsWebService {
         api = retrofit.create(MealsApi::class.java)
     }
 
-    fun getMeals(): Call<MealsCategoriesResponse> {
-        return api.getMeals()
+    suspend fun getCategories(): MealsCategoriesResponse {
+        return api.getCategories()
+    }
+
+    suspend fun getMealsByCategory(category: String): MealsResponse {
+        return api.getMealsByCategory(category)
     }
 }

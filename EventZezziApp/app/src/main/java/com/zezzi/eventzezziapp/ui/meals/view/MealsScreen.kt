@@ -1,5 +1,6 @@
 package com.zezzi.eventzezziapp.ui.meals.view
 
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -26,27 +27,26 @@ import com.zezzi.eventzezziapp.ui.common.CircularLoadingSpinner
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
-fun MealsCategoriesScreen(
+fun MealsScreen(
     navController: NavController,
-    viewModel: MealsCategoriesViewModel = viewModel()
+    category: String,
+    viewModel: MealsViewModel = viewModel()
 ) {
-    if (viewModel.categoryUiState.categories.isEmpty()) {
-        viewModel.getMeals()
-    }
+    viewModel.getMealsByCategory(category)
 
     Scaffold(
         topBar = {
-            AppBar(title = "Categories", navController = navController)
+            AppBar(title = "Meals - $category", navController = navController)
         }
     ) {
-        if (viewModel.categoryUiState.loading) {
+        if (viewModel.mealsUiState.loading) {
             CircularLoadingSpinner()
         } else {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 contentPadding = it,
             ) {
-                items(viewModel.categoryUiState.categories) { meal ->
+                items(viewModel.mealsUiState.meals) { meal ->
                     Card(
                         shape = RoundedCornerShape(8.dp),
                         elevation = 2.dp,

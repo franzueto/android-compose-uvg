@@ -1,10 +1,16 @@
 package com.zezzi.eventzezziapp.data.networking
 
 import com.zezzi.eventzezziapp.data.networking.response.MealsCategoriesResponse
-import retrofit2.Call
+import com.zezzi.eventzezziapp.data.networking.response.MealsResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface MealsApi {
     @GET("categories.php")
-    fun getMeals(): Call<MealsCategoriesResponse>
+    suspend fun getCategories(): MealsCategoriesResponse
+
+    @GET("filter.php")
+    suspend fun getMealsByCategory(
+        @Query("c") category: String
+    ): MealsResponse
 }
